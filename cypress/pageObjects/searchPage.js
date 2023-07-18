@@ -1,14 +1,19 @@
 class SearchPage {
+    elements={
+        txtSearchBox:()=>cy.get('#APjFqb'),
+        firstsearchResult:()=> cy.get('#rcnt')
+    
+        }
     visitSearchEngine() {
       cy.visit('/');
     }
   
     submitSearchTerm(term) {
-        cy.get('#APjFqb').type(term).type('{enter}');
+        this.elements.txtSearchBox.type(term).type('{enter}');
     }
   
     getFirstSearchResult() {
-      return cy.get('#rcnt').first();
+      return this.elements.firstsearchResult.first();
     }
   }
   
